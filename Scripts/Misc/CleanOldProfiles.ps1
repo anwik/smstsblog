@@ -1,7 +1,7 @@
 ﻿<#
 .SYNOPSIS
     Remove userprofiles that are older than X days.
-    Filename: LocalCleanOldProfiles.ps1
+    Filename: CleanOldProfiles.ps1
 .DESCRIPTION
     This script is executed locally on a computer on which you want to remove old profiles.
     You will see some output in the console and for more comprehensive information you can check the logfile "DeleteOldProfiles.log"
