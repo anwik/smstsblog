@@ -1,7 +1,11 @@
 ﻿<#
 .SYNOPSIS
     Creates collections to be used with IPU Installer from Onevinn AB - https://onevinn.schrewelius.it/index.html
-    Change the variables on rows 19-24 to suite your needs. If you don't change them you will get the same naming standard as Johan describes in the documentation.
+    Also creates a custom Client Setting with a 30min schedule for Hardware Inventory.
+    Note that this script will not do everything for you, at it's current state you still have to import the data from configuration.mof + importing the classes from SMS.mof manually.
+    You will also have to manually create the applications: IPUInstaller and DeploymentScheduler.
+    This script will be updated to automate the process further but for now this is what you get :) 
+    Change the variables on rows 32-38 to suite your needs. If you don't change them you will get the same naming standard as Johan describes in the documentation.
     Filename: CreateIPUInstallerCollections.ps1
 .NOTES
     Version: 1.0
