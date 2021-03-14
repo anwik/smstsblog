@@ -21,7 +21,7 @@ $PathToScript = Switch ($Host.name){
     'ConsoleHost' { $PSScriptRoot }
 }
 Set-Location $PathToScript
-.\NewScriptFunction.ps1
+.\NewScriptFunction.ps1 # Loads a function to be able to import PS-script to CM-Console
 Set-location C:
 
 
