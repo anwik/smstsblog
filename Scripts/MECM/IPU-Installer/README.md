@@ -3,7 +3,7 @@
 These PS-scripts will automate the installation and configuration of IPU-Installer. Download the scripts and add them to the root of 'IPUInstaller'-folder
 that you will find here: https://onevinn.schrewelius.it/index.html
 
-What does the script do?\ 
+What does the script do?\
 Creates all the collections including the correct rules.\
 Creates a new Device Collection folder that will house the newly created collections.\
 Creates a new Client Policy with the "correct" (recommended) schedule for Hardware Inventory\
