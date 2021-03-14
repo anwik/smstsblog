@@ -107,14 +107,6 @@ Write-Host "Location successfully set" -ForegroundColor Green
     Write-Host "Done" -ForegroundColor Green
 
 
-# Asking to import Configuration.mof file
- Write-Host "Now it's time to edit the configuration.mof file. For now you will have to do this manually. Press Y when you're ready to continue with the next step" -ForegroundColor Green
- $response = Read-Host 'Are you done, editing the configuration.mof file? [y/N]'
-if ($response -ne 'y') {
-    Write-Host 'Exiting script'
-    return
-}
-
 # Creating client setting to be able to run hardware inventory on the IPU collections
     Write-Host 'Creating Custom Client Setting named:' $ClientSettingName -ForegroundColor Yellow
     $HWInvSched = New-CMSchedule -RecurCount '30' -RecurInterval 'Minutes' # This is the schedule for the hardware inventory cycle in the custom client setting that we're creating
@@ -132,29 +124,26 @@ if ($response -ne 'y') {
 # Create the script in CM console
 
 $Script = {$IpuResultPath = "HKLM:\SOFTWARE\Onevinn\IpuResult"
-
 New-ItemProperty -Path $IpuResultPath -Name 'LastStatus' -Value "Unknown" -Force -EA SilentlyContinue | Out-Null
-
 Invoke-WMIMethod -Namespace root\ccm -Class SMS_CLIENT -Name TriggerSchedule "{00000000-0000-0000-0000-000000000001}" | Out-Null
-
 $folderPath = "$($env:SystemDrive)\`$WINDOWS.~BT"
-
 if (Test-Path -Path "$folderPath") {
     Remove-Item -Path "$folderPath" -Force -EA SilentlyContinue | Out-Null
 }
 }
-Write-Host 'Importing console script: Reset_IPU_Status.ps1' -ForegroundColor Yellow
+
+Write-Host 'Importing console script: .\ConsoleScript\Reset_IPU_Status.ps1' -ForegroundColor Yellow
 $CreateScript = New-CMPowershellScript -ScriptName "IPU Reset" -Script $Script
-Write-Host 'Done' -ForegroundColor Green
+Write-Host "Import complete. Don't forget to approve it." -ForegroundColor Green
 
 
 
 
 
-Write-Host "Setting location back to local disk" -ForegroundColor Yellow
+Write-Host 'Setting location back to local disk' -ForegroundColor Yellow
 Set-Location C:
 }
 catch {
     $_
 }
-Write-Host "Script execution complete :)" -ForegroundColor Green
+Write-Host 'Script execution complete. Exiting.' -ForegroundColor Green
