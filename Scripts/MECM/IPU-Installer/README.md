@@ -15,4 +15,4 @@ The script will not create either of the applications for you, that is the IPUIn
 
 ## Planned features:
 I'm hoping to fully automate the entire installation but I have no ETA on this. Not even sure if there's even a demand :D\
-Built it mainly for myself and my co-workers that will be interested in using this awesome tool from Johan.
+Built it mainly for myself and anyone who will be interested in using this awesome tool from Johan.
