@@ -31,7 +31,7 @@
     Version:     1.0.1
 
 Version history:
-1.0.1 - (2021-03-16) - Borrowed/stole some of Gary's codea. Added import and deployment of "Deployment Scheduler" app.
+1.0.1 - (2021-03-16) - Borrowed/stole some of Gary's code. Added import and deployment of "Deployment Scheduler" app.
 1.0.0 - (2021-03-13) - Script created
    
 #>
