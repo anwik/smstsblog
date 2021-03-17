@@ -22,11 +22,11 @@ function Get-Uninstaller {
     [string] $Name
   )
  
-  $local_key     = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*'
-  $machine_key32 = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*'
-  $machine_key64 = 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*'
+  $Local_Key     = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*'
+  $Machine_Key32 = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*'
+  $Machine_Key64 = 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*'
  
-  $keys = @($local_key, $machine_key32, $machine_key64)
+  $Keys = @($Local_Key, $Machine_Key32, $Machine_Key64)
  
   Get-ItemProperty -Path $keys -ErrorAction 'SilentlyContinue' | Where-Object { ($_.DisplayName -like "*$Name*") -or ($_.PsChildName -like "*$Name*") } | Select-Object PsPath,DisplayVersion,DisplayName,UninstallString,InstallSource,InstallLocation,QuietUninstallString,InstallDate
 }
